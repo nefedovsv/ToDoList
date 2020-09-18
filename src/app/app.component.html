@@ -1,4 +1,20 @@
-<!-- NG-ZORRO -->
-<a href="https://github.com/NG-ZORRO/ng-zorro-antd" target="_blank" style="display: flex;align-items: center;justify-content: center;height: 100%;width: 100%;">
-  <img height="300" src="https://img.alicdn.com/tfs/TB1X.qJJgHqK1RjSZFgXXa7JXXa-89-131.svg">
-</a>
+<div class="app-header">
+  <button
+    nz-button
+    nzType="primary"
+    routerLink="form"
+  >
+    Todo List
+  </button>
+  <button
+    nz-button
+    nzType="primary"
+    routerLink="task-board"
+  >
+    Task Board
+  </button>
+</div>
+<nz-divider></nz-divider>
+
+<router-outlet></router-outlet>
+
