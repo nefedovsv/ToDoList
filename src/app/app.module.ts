@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NZ_I18N } from 'ng-zorro-antd/i18n';
@@ -14,27 +14,42 @@ import { FormComponent, TaskBoardComponent } from './components';
 import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NzDividerModule } from 'ng-zorro-antd/divider';
 import { StoreModule } from '@ngrx/store';
-import { todoInitialState, todoReducer } from "./components/store";
+import { todoReducer } from "./store";
+import { StoreFacade } from './store/todo.facade';
+import { NzInputModule } from 'ng-zorro-antd/input';
+import { NzCardModule } from 'ng-zorro-antd/card';
+import { localStorageSync } from 'ngrx-store-localstorage';
+import { NzIconModule } from 'ng-zorro-antd/icon';
 
 registerLocaleData(en);
 
+export function localStorageSyncReducer(reducer) {
+  return localStorageSync({
+    keys: ['todoList'],
+    rehydrate: true,
+  })(reducer);
+}
+
 @NgModule({
-  declarations: [
-    AppComponent,
-    TaskBoardComponent,
-    FormComponent,
-  ],
+  declarations: [AppComponent, TaskBoardComponent, FormComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
     NzButtonModule,
     NzDividerModule,
-    StoreModule.forRoot({todoList: todoReducer}),
+    NzInputModule,
+    NzCardModule,
+    NzIconModule,
+    StoreModule.forRoot(
+      { todoList: todoReducer },
+      { metaReducers: [localStorageSyncReducer] },
+    ),
   ],
-  providers: [{ provide: NZ_I18N, useValue: en_US }],
-  bootstrap: [AppComponent]
+  providers: [StoreFacade, { provide: NZ_I18N, useValue: en_US }],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

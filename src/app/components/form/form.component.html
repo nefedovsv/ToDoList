@@ -1,1 +1,38 @@
-<p>form works!</p>
+<div class="main-container">
+  <form 
+    (ngSubmit)="submit()"
+    [formGroup]="form" 
+    class="form"
+  >
+    <h1>Create new task</h1>
+    <input
+      nz-input 
+      placeholder="title" 
+      formControlName="title"
+    />
+    <input
+      nz-input 
+      placeholder="description" 
+      formControlName="description"
+    />
+    <input
+      nz-input 
+      placeholder="priority" 
+      type="number"
+      formControlName="priority"
+    />
+    <input
+      nz-input 
+      placeholder="color" 
+      formControlName="color"
+    />
+    <button
+      nz-button
+      nzType="primary"
+      [disabled]="form.invalid"
+      type="submit"
+    >
+      Add Task
+    </button>
+  </form>
+</div>

@@ -1,1 +1,15 @@
-<p>task-board works!</p>
+<nz-card nzTitle="Todo list">
+  <nz-card 
+    *ngFor="
+      let entry of todos$ | async;
+      let i = index;
+      trackBy: trackByFn"
+    nzType="inner" 
+    [nzTitle]="entry.title" 
+    (click)="changeStatus(i)"
+  >
+    <p>description: {{entry.description}}</p>
+    <p>priority: {{entry.priority}}</p>
+    <p>color: {{entry.color}}</p>
+  </nz-card>
+</nz-card>

@@ -1,0 +1,16 @@
+.main-container {
+  height: calc(100% - 100px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.form {
+  width: 400px;
+  height: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  
+}

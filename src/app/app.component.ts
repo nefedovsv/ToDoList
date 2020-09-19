@@ -1,29 +1,20 @@
 import { Component, OnInit } from '@angular/core';
-import { TodoListStoreFacade } from "./components/store/todo.facade";
-import { Todo } from "./components/interfaces/todo";
+import { StoreFacade } from "./store/todo.facade";
+import { Todo } from "./interfaces/todo";
 import { Observable } from "rxjs";
 import { Store, select } from "@ngrx/store";
+import { ITodoState } from './store';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements OnInit {
-  title = 'todoList';
-  todo$: Observable<Todo[]>;
 
   constructor(
-    private store: Store<{ todoList: any }>
-  ) {
-  }
+    private facade: StoreFacade) {}
+
   ngOnInit(): void {
-    this.todo$ = this.store.pipe(select('todoList'));
-    this.todo$.subscribe(todo => {
-      console.log(todo);
-    })
-
-
-
   }
 }

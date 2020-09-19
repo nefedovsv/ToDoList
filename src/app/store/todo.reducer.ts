@@ -26,5 +26,14 @@ export const todoReducer = createReducer(
     return {
       ...state,
     };
-  })
+  }),
+
+  on(actions.addNewTask, (state, action) => {
+    console.log(action);
+    
+    return {
+      ...state,
+      todoList: [...state.todoList, action.newTask],
+    };
+  }),
 );
