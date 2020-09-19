@@ -1,11 +1,3 @@
-<button 
-  nz-button 
-  [nzType]="'primary'" 
-  (click)="showModal()"
->
-  Add selector
-</button>
-
 <nz-tabset [nzTabPosition]="'top'" [nzType]="'card'">
   <nz-tab 
     *ngFor="let tab of selectors$ | async" 
@@ -29,12 +21,3 @@
    </nz-card> 
   </nz-tab>
 </nz-tabset>
-
-
-<nz-modal 
-  [(nzVisible)]="isVisible" 
-  nzTitle="Select params" 
-  (nzOnCancel)="handleCancel()" 
-  (nzOnOk)="handleOk()">
-  <p>Content one</p>
-</nz-modal>
