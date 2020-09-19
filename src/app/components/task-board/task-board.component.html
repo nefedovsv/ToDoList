@@ -1,15 +1,40 @@
-<nz-card nzTitle="Todo list">
-  <nz-card 
-    *ngFor="
-      let entry of todos$ | async;
-      let i = index;
-      trackBy: trackByFn"
-    nzType="inner" 
-    [nzTitle]="entry.title" 
-    (click)="changeStatus(i)"
-  >
-    <p>description: {{entry.description}}</p>
-    <p>priority: {{entry.priority}}</p>
-    <p>color: {{entry.color}}</p>
-  </nz-card>
-</nz-card>
+<button 
+  nz-button 
+  [nzType]="'primary'" 
+  (click)="showModal()"
+>
+  Add selector
+</button>
+
+<nz-tabset [nzTabPosition]="'top'" [nzType]="'card'">
+  <nz-tab 
+    *ngFor="let tab of selectors$ | async" 
+    [nzTitle]="tab.name"
+    (nzClick)="updateBySelector(tab)"
+    (nzSelect)="setCurrentSelector(tab)"
+
+  > 
+    <nz-card nzTitle="Todo list">
+      <nz-card 
+        *ngFor="let entry of todos$ | async"
+        nzType="inner" 
+        [nzTitle]="entry.title" 
+        (click)="changeStatus(entry.id)"
+        [class.completed]="entry.completed"
+      >
+        <p>description: {{entry.description}}</p>
+        <!-- <p>priority: {{entry.priority}}</p>
+        <p>color: {{entry.color}}</p> -->
+      </nz-card>
+   </nz-card> 
+  </nz-tab>
+</nz-tabset>
+
+
+<nz-modal 
+  [(nzVisible)]="isVisible" 
+  nzTitle="Select params" 
+  (nzOnCancel)="handleCancel()" 
+  (nzOnOk)="handleOk()">
+  <p>Content one</p>
+</nz-modal>

@@ -32,6 +32,7 @@ export class FormComponent implements OnInit {
       priority: this.form.value.priority,
       color: this.form.value.color,
       completed: false,
+      id: Math.floor(Math.random() * 100),
     };
     this.facade.addNewTask(newTask);
     this.form.reset();

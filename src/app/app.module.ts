@@ -20,6 +20,8 @@ import { NzInputModule } from 'ng-zorro-antd/input';
 import { NzCardModule } from 'ng-zorro-antd/card';
 import { localStorageSync } from 'ngrx-store-localstorage';
 import { NzIconModule } from 'ng-zorro-antd/icon';
+import { NzTabsModule } from 'ng-zorro-antd/tabs';
+import { NzModalModule } from 'ng-zorro-antd/modal';
 
 registerLocaleData(en);
 
@@ -44,6 +46,8 @@ export function localStorageSyncReducer(reducer) {
     NzInputModule,
     NzCardModule,
     NzIconModule,
+    NzTabsModule,
+    NzModalModule,
     StoreModule.forRoot(
       { todoList: todoReducer },
       { metaReducers: [localStorageSyncReducer] },
