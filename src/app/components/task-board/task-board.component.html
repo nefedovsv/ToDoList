@@ -9,7 +9,8 @@
 
 <nz-tabset [nzTabPosition]="'top'" [nzType]="'card'">
   <nz-tab 
-    *ngFor="let tab of selectors$ | async" 
+    *ngFor="let tab of selectors$ | async;
+    trackBy:trackByFn" 
     [nzTitle]="tab.name"
     (nzClick)="updateBySelector(tab)"
     (nzSelect)="setCurrentSelector(tab)"

@@ -73,8 +73,6 @@ export const todoReducer = createReducer(
   }),
 
   on(actions.removeSelector, (state, action) => {
-    console.log(action.selectorName);
-    
     const updateSelectors = state.selectors.filter(selector => selector.name !== action.selectorName)
     return {
       ...state,
