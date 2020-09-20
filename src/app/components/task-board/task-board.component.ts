@@ -1,7 +1,9 @@
 import { Todo, Selector } from './../../interfaces/todo';
 import { Observable } from 'rxjs';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { StoreFacade } from 'src/app/store/todo.facade';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { SelectorComponent } from '../selector/selector.component';
 
 @Component({
   selector: 'app-task-board',
@@ -13,12 +15,14 @@ export class TaskBoardComponent implements OnInit {
   public currentSelector: Selector;
   public todos$: Observable<Todo[]>;
   public selectors$: Observable<Selector[]>;
+  @ViewChild(SelectorComponent, { static: false })
+  private selectorComponent: SelectorComponent;
 
   constructor(private facade: StoreFacade) {}
 
   ngOnInit(): void {
-    this.todos$ = this.facade.selectedTodoList$;
     this.selectors$ = this.facade.selectors$;
+    this.todos$ = this.facade.selectedTodoList$;
   }
 
   changeStatus(id: number) {
@@ -43,13 +47,18 @@ export class TaskBoardComponent implements OnInit {
     this.isVisible = true;
   }
 
-  handleOk(): void {
-    console.log('Button ok clicked!');
+  handleOk(): void {  
+    this.facade.addNewTab(this.selectorComponent.form.value);
     this.isVisible = false;
+    this.selectorComponent.form.reset()
   }
 
   handleCancel(): void {
-    console.log('Button cancel clicked!');
     this.isVisible = false;
+    this.selectorComponent.form.reset();
+  }
+
+  closeTab(tab: string): void {
+    // this.tabs.splice(this.tabs.indexOf(tab), 1);
   }
 }

@@ -7,6 +7,11 @@ export const addNewTask = createAction(
   props<{ newTask: Todo }>()
 );
 
+export const addNewTab = createAction(
+  '[Todo] Add new Tab',
+  props<{ newTab: Selector }>()
+);
+
 export const changeTaskStatus = createAction(
   '[Todo] Change task status',
   props<{ id: number }>()

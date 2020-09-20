@@ -22,6 +22,8 @@ import { localStorageSync } from 'ngrx-store-localstorage';
 import { NzIconModule } from 'ng-zorro-antd/icon';
 import { NzTabsModule } from 'ng-zorro-antd/tabs';
 import { NzModalModule } from 'ng-zorro-antd/modal';
+import { NzSelectModule } from 'ng-zorro-antd/select';
+import { SelectorComponent } from './components/selector/selector.component';
 
 registerLocaleData(en);
 
@@ -33,7 +35,7 @@ export function localStorageSyncReducer(reducer) {
 }
 
 @NgModule({
-  declarations: [AppComponent, TaskBoardComponent, FormComponent],
+  declarations: [AppComponent, TaskBoardComponent, FormComponent, SelectorComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -48,6 +50,7 @@ export function localStorageSyncReducer(reducer) {
     NzIconModule,
     NzTabsModule,
     NzModalModule,
+    NzSelectModule,
     StoreModule.forRoot(
       { todoList: todoReducer },
       { metaReducers: [localStorageSyncReducer] },

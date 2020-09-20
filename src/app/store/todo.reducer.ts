@@ -45,6 +45,15 @@ export const todoReducer = createReducer(
     };
   }),
 
+  on(actions.addNewTab, (state, action) => {
+    return {
+      ...state,
+      selectors: [
+        ...state.selectors, action.newTab
+      ]
+    };
+  }),
+
   on(actions.changeTaskStatus, (state, action) => {
     const updatetodoList = state.todoList.map((todo: Todo) => {
       if (todo.id === action.id) {

@@ -1,7 +1,7 @@
 export interface Todo {
   title: string;
   description: string;
-  priority: number;
+  priority: string;
   color: string;
   completed: boolean;
   id: number;
@@ -10,5 +10,5 @@ export interface Todo {
 export interface Selector {
   name: string;
   field: string;
-  filterValue: boolean | null;
+  filterValue: boolean | string;
 }

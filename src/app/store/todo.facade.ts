@@ -3,7 +3,12 @@ import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { ITodoState } from "./todo.reducer";
 import { getSelectedTodoList, getSelectors, getTodoList } from "./todo.selectors";
-import { addNewTask, changeTaskStatus, setSelector } from './todo.actions';
+import {
+  addNewTask,
+  changeTaskStatus,
+  setSelector,
+  addNewTab,
+} from './todo.actions';
 
 @Injectable()
 export class StoreFacade {
@@ -15,6 +20,10 @@ export class StoreFacade {
 
   public addNewTask(newTask: Todo) {
     this.store.dispatch(addNewTask({ newTask }));
+  }
+
+  public addNewTab(newTab: Selector) {
+    this.store.dispatch(addNewTab({ newTab }));
   }
 
   public changeTaskStatus(id: number) {

@@ -1,10 +1,18 @@
+<button 
+    nz-button 
+    [nzType]="'primary'" 
+    (click)="showModal()"
+    class="add-new-tab"
+>
+  Add selector
+</button>
+
 <nz-tabset [nzTabPosition]="'top'" [nzType]="'card'">
   <nz-tab 
     *ngFor="let tab of selectors$ | async" 
     [nzTitle]="tab.name"
     (nzClick)="updateBySelector(tab)"
     (nzSelect)="setCurrentSelector(tab)"
-
   > 
     <nz-card nzTitle="Todo list">
       <nz-card 
@@ -13,11 +21,19 @@
         [nzTitle]="entry.title" 
         (click)="changeStatus(entry.id)"
         [class.completed]="entry.completed"
+        [style.backgroundColor]="entry.color"
       >
         <p>description: {{entry.description}}</p>
-        <!-- <p>priority: {{entry.priority}}</p>
-        <p>color: {{entry.color}}</p> -->
+        <p>priority: {{entry.priority}}</p>
       </nz-card>
    </nz-card> 
   </nz-tab>
 </nz-tabset>
+
+<nz-modal 
+  [(nzVisible)]="isVisible" 
+  nzTitle="Select params" 
+  (nzOnCancel)="handleCancel()" 
+  (nzOnOk)="handleOk()">
+    <app-selector></app-selector>
+</nz-modal>
