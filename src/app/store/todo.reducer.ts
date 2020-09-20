@@ -41,16 +41,14 @@ export const todoReducer = createReducer(
   on(actions.addNewTask, (state, action) => {
     return {
       ...state,
-      todoList:[ ...state.todoList, action.newTask]
+      todoList: [...state.todoList, action.newTask],
     };
   }),
 
   on(actions.addNewTab, (state, action) => {
     return {
       ...state,
-      selectors: [
-        ...state.selectors, action.newTab
-      ]
+      selectors: [...state.selectors, action.newTab],
     };
   }),
 
@@ -60,7 +58,7 @@ export const todoReducer = createReducer(
         return { ...todo, completed: !todo.completed };
       }
       return todo;
-    });     
+    });
     return {
       ...state,
       todoList: updatetodoList,
@@ -70,7 +68,17 @@ export const todoReducer = createReducer(
   on(actions.setSelector, (state, action) => {
     return {
       ...state,
-      currentSelector: action.selector
+      currentSelector: action.selector,
+    };
+  }),
+
+  on(actions.removeSelector, (state, action) => {
+    console.log(action.selectorName);
+    
+    const updateSelectors = state.selectors.filter(selector => selector.name !== action.selectorName)
+    return {
+      ...state,
+      selectors: updateSelectors,
     };
   })
 );

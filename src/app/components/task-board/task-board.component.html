@@ -13,7 +13,19 @@
     [nzTitle]="tab.name"
     (nzClick)="updateBySelector(tab)"
     (nzSelect)="setCurrentSelector(tab)"
+    [nzTitle]="titleTemplate"
   > 
+     <ng-template #titleTemplate>
+        <div>
+          {{ tab.name }}
+        <i 
+          nz-icon 
+          nzType="close" 
+          (click)="closeTab(tab.name)" 
+          class="ant-tabs-close-x"
+        ></i>
+      </div>
+    </ng-template>
     <nz-card nzTitle="Todo list">
       <nz-card 
         *ngFor="let entry of todos$ | async"

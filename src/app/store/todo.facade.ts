@@ -2,12 +2,17 @@ import { Todo, Selector } from './../interfaces/todo';
 import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { ITodoState } from "./todo.reducer";
-import { getSelectedTodoList, getSelectors, getTodoList } from "./todo.selectors";
+import {
+  getSelectedTodoList,
+  getSelectors,
+  getTodoList,
+} from './todo.selectors';
 import {
   addNewTask,
   changeTaskStatus,
   setSelector,
   addNewTab,
+  removeSelector,
 } from './todo.actions';
 
 @Injectable()
@@ -32,5 +37,9 @@ export class StoreFacade {
 
   public setSelector(selector: Selector) {
     this.store.dispatch(setSelector({ selector }));
+  }
+
+  public removeSelector(selectorName: string) {
+    this.store.dispatch(removeSelector({ selectorName }));
   }
 }

@@ -8,7 +8,7 @@ export const addNewTask = createAction(
 );
 
 export const addNewTab = createAction(
-  '[Todo] Add new Tab',
+  '[Todo] Add new tab',
   props<{ newTab: Selector }>()
 );
 
@@ -18,6 +18,11 @@ export const changeTaskStatus = createAction(
 );
 
 export const setSelector = createAction(
-  '[Todo] Change task status',
+  '[Todo] Set selector',
   props<{ selector: Selector }>()
+);
+
+export const removeSelector = createAction(
+  '[Todo] Remove selector',
+  props<{ selectorName: string }>()
 );

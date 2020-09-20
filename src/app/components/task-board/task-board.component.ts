@@ -58,7 +58,7 @@ export class TaskBoardComponent implements OnInit {
     this.selectorComponent.form.reset();
   }
 
-  closeTab(tab: string): void {
-    // this.tabs.splice(this.tabs.indexOf(tab), 1);
+  closeTab(selectorName: string): void {
+    this.facade.removeSelector(selectorName);
   }
 }
