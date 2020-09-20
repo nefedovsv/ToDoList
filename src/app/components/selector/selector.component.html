@@ -1,22 +1,22 @@
 <div class="main-container">
-      <form 
-        [formGroup]="form" 
-        class="form"
-      >
-        <input
-          nz-input 
-          placeholder="name" 
-          formControlName="name"
-        />
-        <nz-select  formControlName="field">
-          <nz-option nzValue="title" nzLabel="Title"></nz-option>
-          <nz-option nzValue="priority" nzLabel="Priority"></nz-option>
-          <nz-option nzValue="color" nzLabel="Color"></nz-option>
-        </nz-select>
-        <input
-          nz-input 
-          placeholder="filterValue" 
-          formControlName="filterValue"
-        />
-      </form>
-    </div>
+  <form 
+    [formGroup]="form" 
+    class="form"
+  >
+    <input
+      nz-input 
+      placeholder="name" 
+      formControlName="name"
+    />
+    <nz-select  formControlName="field">
+      <nz-option nzValue="title" nzLabel="Title"></nz-option>
+      <nz-option nzValue="priority" nzLabel="Priority"></nz-option>
+      <nz-option nzValue="color" nzLabel="Color"></nz-option>
+    </nz-select>
+    <input
+      nz-input 
+      placeholder="filterValue" 
+      formControlName="filterValue"
+    />
+  </form>
+</div>

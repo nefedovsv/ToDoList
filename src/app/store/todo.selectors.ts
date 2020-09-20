@@ -2,6 +2,7 @@ import { createFeatureSelector, createSelector } from '@ngrx/store';
 import { ITodoState } from "./todo.reducer";
 
 const todoKey = createFeatureSelector<ITodoState>('todoList');
+const SELECTOR_ALL = 'All';
 
 export const getTodoList = createSelector(
   todoKey,
@@ -19,7 +20,7 @@ export const getSelectedTodoList = createSelector(
     if (state.currentSelector) {
       const selector = state.currentSelector    
       return state.todoList.filter(todo => {
-        if (state.currentSelector.name === 'All') return todo;
+        if (state.currentSelector.name === SELECTOR_ALL) return todo;
         return todo[selector.field] === selector.filterValue
       })
     }

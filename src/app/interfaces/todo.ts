@@ -9,6 +9,6 @@ export interface Todo {
 
 export interface Selector {
   name: string;
-  field: string;
+  field: keyof Todo;
   filterValue: boolean | string;
 }
