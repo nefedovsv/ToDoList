@@ -1,20 +1,21 @@
-<div class="app-header">
-  <button
-    nz-button
-    nzType="primary"
-    routerLink="task-board"
-  >
-    Task Board
-  </button>
-  <button
-    nz-button
-    nzType="primary"
-    routerLink="form"
-  >
-    Form
-  </button>
+<div class="main">
+  <div class="app-header">
+    <button
+      nz-button
+      nzType="primary"
+      routerLink="task-board"
+    >
+      Task Board
+    </button>
+    <button
+      nz-button
+      nzType="primary"
+      routerLink="form"
+    >
+      Form
+    </button>
+  </div>
+  <nz-divider></nz-divider>
+
+  <router-outlet></router-outlet>
 </div>
-<nz-divider></nz-divider>
-
-<router-outlet></router-outlet>
-
