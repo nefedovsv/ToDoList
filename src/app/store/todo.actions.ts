@@ -1,4 +1,3 @@
-import { select } from '@ngrx/store';
 import { Todo, Selector } from './../interfaces/todo';
 import { createAction, props } from '@ngrx/store';
 

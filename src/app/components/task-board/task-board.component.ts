@@ -2,7 +2,6 @@ import { Todo, Selector } from './../../interfaces/todo';
 import { Observable } from 'rxjs';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { StoreFacade } from 'src/app/store/todo.facade';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { SelectorComponent } from '../selector/selector.component';
 
 @Component({
@@ -47,10 +46,10 @@ export class TaskBoardComponent implements OnInit {
     this.isVisible = true;
   }
 
-  handleOk(): void {  
+  handleOk(): void {
     this.facade.addNewTab(this.selectorComponent.form.value);
     this.isVisible = false;
-    this.selectorComponent.form.reset()
+    this.selectorComponent.form.reset();
   }
 
   handleCancel(): void {

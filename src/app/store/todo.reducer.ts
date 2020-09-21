@@ -1,6 +1,6 @@
 import { createReducer, on } from '@ngrx/store';
 import * as actions from './todo.actions';
-import { Todo, Selector } from "../interfaces/todo";
+import { Todo, Selector } from '../interfaces/todo';
 
 
 export interface ITodoState {
@@ -73,7 +73,7 @@ export const todoReducer = createReducer(
   }),
 
   on(actions.removeSelector, (state, action) => {
-    const updateSelectors = state.selectors.filter(selector => selector.name !== action.selectorName)
+    const updateSelectors = state.selectors.filter(selector => selector.name !== action.selectorName);
     return {
       ...state,
       selectors: updateSelectors,
